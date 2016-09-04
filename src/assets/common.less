@@ -1,0 +1,15 @@
+@green: #42b983;
+@gray: #333;
+
+.half-line (@to: bottom, @x: left, @y: bottom, @width: 100%, @height: 1px, @color: #dbdbdb){
+	background-image: linear-gradient(to @to,transparent 50%, @color 50%);
+	background-size: @width @height;
+	background-repeat: no-repeat;
+	background-position: @x @y;
+}
+
+.box-shadow (@x: 0, @y: 0, @blur: 1px, @color: #000) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}

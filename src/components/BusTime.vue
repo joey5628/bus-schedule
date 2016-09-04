@@ -1,5 +1,6 @@
 <template>
 	<div class="bus-time">
+		<p class="station-name">{{stationName}}</p>
 		<p class="arrival-time">{{arrivalTime}}</p>
 		<p class="time">当前时间：{{time}}</p>
 	</div>
@@ -9,6 +10,7 @@
 export default {
   data () {
     return {
+    	stationName: '新家园路',
     	arrivalTime: '沪D-C2366 还有4站，约5分钟',
     	time: '6:31'
     }
@@ -17,21 +19,23 @@ export default {
 </script>
 
 <style lang="less">
-	.bus-time {
-		background-image: linear-gradient(to bottom,transparent 50%,#dbdbdb 50%);
-		background-size: 100% 1px;
-		background-repeat: no-repeat;
-		background-position: left bottom;
+	@import '../assets/common.less';
 
+	.bus-time {
+		.half-line(bottom, left, bottom, 100%, 1px);
+		.station-name {
+			color: @green;
+			margin: 0px;
+			padding: 20px;
+		}
 		.arrival-time {
-			color: #42b983;
-			font-size: 20px;
+			color: @green;
+			font-size: 18px;
 			margin: 0;
-			padding: 20px 40px 0;
+			padding: 0 40px;
 		}
 		.time {
-			color: rgba(102,102,102,0.6);
-			font-size: 16px;
+			color: @gray;
 			margin: 0;
 			padding: 20px 40px;
 		}

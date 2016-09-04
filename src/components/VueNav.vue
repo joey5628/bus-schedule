@@ -24,7 +24,6 @@ export default {
 
 <style lang="less">
 	.nav-bar {
-		// background-color: #dbdbdb;
 		margin-top: 44px;
 		height: 44px;
 		ul{
