@@ -24,11 +24,11 @@ export default {
 		height: 44px;
 		line-height: 44px;
 		text-align: center;
-		margin: 0 2px;
-		box-shadow: 0 0 4px rgba(0,0,0,0.25);
-
+		box-shadow: 0 0 2px rgba(0,0,0,0.25);
+		// box-shadow: 0 0 4px rgba(0,0,0,0.25);
+		background-color: #42b983;
 		strong {
-			color: #42b983;
+			color: #fff;
 			font-size: 18px;
 			font-weight: 500;
 		}
