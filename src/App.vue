@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import store from './vuex/store'
 import VueHeader from './components/VueHeader'
 import VueNav from './components/VueNav'
 import BusTime from './components/BusTime'
@@ -21,7 +22,8 @@ export default {
     VueNav,
     BusTime,
     StationList
-  }
+  },
+  store
 }
 </script>
 
