@@ -1,21 +1,44 @@
 <template>
   <div class="bus-time">
-    <p class="station-name">{{stationName}}</p>
+    <p class="station-name">{{name}}</p>
     <p class="arrival-time">{{arrivalTime}}</p>
     <p class="time">当前时间：{{time}}</p>
   </div>
 </template>
 
 <script>
+// import busService from '../services/busService'
+import {getWay} from '../vuex/getters'
+
 export default {
   data () {
     return {
-      stationName: '新家园路',
-      arrivalTime: '沪D-C2366 还有4站，约5分钟',
-      time: '6:31'
+      stopid: 13,
+      name: '新家园路',
+      arrivalTime: '',
+      time: ''
+    }
+  },
+
+  vuex: {
+    getters: {
+      way: getWay
+    }
+  },
+
+  watch: {
+    'way': function (val) {
+      this.stopid = val.start.stopid
+      this.name = val.start.name
+    }
+  },
+
+  methods: {
+    getTime: function (way) {
     }
   }
 }
+
 </script>
 
 <style lang="less">

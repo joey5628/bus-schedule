@@ -1,8 +1,5 @@
 <template>
   <div class="station-list">
-    <p>
-      {{way}}
-    </p>
     <ul>
       <li class="station-item" v-for="(index, station) in stations">
         <p>
@@ -18,7 +15,7 @@
 <script>
 // import busService from '../services/busService'
 import stationsData from '../mock/stationList.js'
-// import {getWay} from '../vuex/getters'
+import {getWay} from '../vuex/getters'
 
 export default {
   data () {
@@ -28,18 +25,18 @@ export default {
   },
 
   ready () {
-    this.stations = stationsData[this.way]
+    this.stations = stationsData[this.way.direction]
   },
 
   watch: {
     'way': function (val) {
-      this.stations = stationsData[val]
+      this.stations = stationsData[val.direction]
     }
   },
 
   vuex: {
     getters: {
-      way: state => state.way
+      way: getWay
     }
   }
 }

@@ -1,7 +1,8 @@
 <template>
   <nav class="nav-bar">
     <ul>
-      <li class="col col-50" v-for="way in ways" @click="changeWay(way)" :class="{active: way.isSelected}">
+      <li class="col col-50" v-for="way in ways" @click="actionChangeWay(way)" 
+        :class="{active: way.direction == stateWay.direction}">
         <a href="javascript:;">{{way.start.name}} - {{way.end.name}}</a>
       </li>
     </ul>
@@ -10,6 +11,7 @@
 
 <script>
 import {changeWay} from '../vuex/actions.js'
+import {getWay} from '../vuex/getters'
 
 export default {
   data () {
@@ -17,25 +19,23 @@ export default {
       ways: [
         {
           direction: 'north',
-          isSelected: true,
           start: {
-            id: 0,
+            stopid: 13,
             name: '新家园路'
           },
           end: {
-            id: 1,
+            stopid: 15,
             name: '佘山地铁站'
           }
         },
         {
           direction: 'south',
-          isSelected: false,
           start: {
-            id: 1,
+            stopid: 12,
             name: '佘山地铁站'
           },
           end: {
-            id: 0,
+            stopid: 14,
             name: '新家园路'
           }
         }
@@ -43,31 +43,12 @@ export default {
     }
   },
 
-  methods: {
-
-    // 切换tab
-    changeWay: function (way) {
-      console.log(way)
-      this.removeSelected()
-      this.addSelected(way)
-      this.actionChangeWay(way.direction)
-    },
-
-    // 删除之前已选中的tab
-    removeSelected: function () {
-      this.ways.forEach((item) => {
-        item.isSelected = false
-      })
-    },
-
-    // 选中一个tab
-    addSelected: function (way) {
-      way.isSelected = true
-    }
-  },
   vuex: {
     actions: {
       actionChangeWay: changeWay
+    },
+    getters: {
+      stateWay: getWay
     }
   }
 }

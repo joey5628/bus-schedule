@@ -1,1 +1,1 @@
-export const getCount = state => state.way
+export const getWay = state => state.way

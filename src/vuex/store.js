@@ -4,12 +4,21 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  way: 'north'
+  way: {
+    direction: 'north',
+    start: {
+      stopid: 13,
+      name: '新家园路'
+    },
+    end: {
+      stopid: 15,
+      name: '佘山地铁站'
+    }
+  }
 }
 
 const mutations = {
   CHANGEWAY (state, way) {
-    console.log('mutations:' + way)
     state.way = way
   }
 }
