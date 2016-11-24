@@ -7,7 +7,7 @@
 </template>
 
 <script>
-// import busService from '../services/busService'
+import busService from '../services/busService'
 import {getWay} from '../vuex/getters'
 
 export default {
@@ -16,7 +16,9 @@ export default {
       stopid: 13,
       name: '新家园路',
       arrivalTime: '',
-      time: ''
+      time: '',
+      getStopUrl: 'http://shanghaicity.openservice.kankanews.com/public/bus/Getstop',
+      sId: '522f13b40d7c9d93aba7d0007d4c9be0'
     }
   },
 
@@ -30,11 +32,25 @@ export default {
     'way': function (val) {
       this.stopid = val.start.stopid
       this.name = val.start.name
+      this.getTime(val)
     }
   },
 
   methods: {
     getTime: function (way) {
+      console.log(way)
+      let stopType = way.direction === 'north' ? 1 : 0
+      let stopId = way.start.stopid
+      let url = `${this.getStopUrl}?stoptype=${stopType}&stopid=${this.stopid}&sid=${this.sId}`.trim()
+      console.log(url)
+      busService.getArrivalTime(url, {
+        stoptype: stopType,
+        stopid: stopId,
+        sid: this.sId
+      }, 'post')
+      .then((data) => {
+        console.log(data)
+      })
     }
   }
 }

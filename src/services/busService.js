@@ -19,8 +19,8 @@ class BusService {
    * @param  {string} options.url
    * @return {object} options.body
    */
-  getArrivalTime (url, body) {
-    return api({url, body})
+  getArrivalTime (url, body, method) {
+    return api({url, body, method})
   }
 
 }

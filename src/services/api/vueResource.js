@@ -18,8 +18,8 @@ Vue.http.options.xhr = { withCredentials: true }
  * @return {Promise} sdsd
  */
 const api = ({url, body, method}) => {
-  method = method || 'get'
   console.log(method)
+  method = method || 'get'
   return new Promise((resolve, reject) => {
     Vue.http[method.toLowerCase()](url, body)
       .then((data) => {
